@@ -10,6 +10,8 @@ jobs:
     steps:
       - name: Setup gitflow
         uses: Logerfo/gitflow-action@0.0.4
+        with:
+          github-token: ${{ secrets.ACTION_TOKEN }}
       - name: Checkout
         uses: actions/checkout@v2
       - name: Run gitflow commands
