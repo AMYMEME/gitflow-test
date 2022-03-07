@@ -1,0 +1,17 @@
+name: Gitflow Test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  gitflow:
+    name: Gitflow
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup gitflow
+        uses: Logerfo/gitflow-action@0.0.4
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Run gitflow commands
+        run: |
+          git-flow --version
