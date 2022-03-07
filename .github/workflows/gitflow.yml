@@ -9,9 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Setup gitflow
-        uses: Logerfo/gitflow-action@0.0.4
-        with:
-          github-token: ${{ secrets.ACTION_TOKEN }}
+        run: |
+          curl --silent --location  https://raw.githubusercontent.com/petervanderdoes/gitflow-avh/develop/contrib/gitflow-installer.sh --output ./gitflow-installer.sh
       - name: Checkout
         uses: actions/checkout@v2
       - name: Run gitflow commands
