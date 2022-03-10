@@ -10,13 +10,10 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
       with:
-        name: ${{ github.event.client_payload.repo }}
+        repository: ${{ github.event.client_payload.repo }}
         submodules: true
         fetch-depth: 0
         refs: 'develop'
-    - name: Check repository
-      run: |
-        git remote --v
     - name: Echo passed payload
       run: |
         echo ${{ github.event.client_payload.option }}
