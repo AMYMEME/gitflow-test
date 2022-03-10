@@ -14,6 +14,10 @@ jobs:
         submodules: true
         fetch-depth: 0
         refs: 'develop'
+    - name: Check repository
+      run: |
+        git remote --v
     - name: Echo passed payload
       run: |
         echo ${{ github.event.client-payload.option }}
+        echo ${{ github.event.client-payload.trigger }}
