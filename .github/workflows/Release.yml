@@ -1,0 +1,19 @@
+on:
+  repository_dispatch:
+    types: release-event
+
+jobs:
+  release:
+    if: ${{ github.event.client_payload.passed }} == 'release'
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        name: ${{ github.event.client-payload.repo }}
+        submodules: true
+        fetch-depth: 0
+        refs: 'develop'
+    - name: Echo passed payload
+      run: |
+        echo ${{ github.event.client-payload.option }}
