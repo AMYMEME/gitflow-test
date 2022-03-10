@@ -3,11 +3,6 @@ on:
     types: release-event
 
 jobs:
-  preset:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Test
-      run: echo ${{ github.event.client_payload.trigger }}
   release:
     if: ${{ github.event.client_payload.trigger }} == 'release'
     runs-on: ubuntu-latest
@@ -15,7 +10,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
       with:
-        name: ${{ github.event.client-payload.repo }}
+        name: ${{ github.event.client_payload.repo }}
         submodules: true
         fetch-depth: 0
         refs: 'develop'
@@ -24,5 +19,5 @@ jobs:
         git remote --v
     - name: Echo passed payload
       run: |
-        echo ${{ github.event.client-payload.option }}
-        echo ${{ github.event.client-payload.trigger }}
+        echo ${{ github.event.client_payload.option }}
+        echo ${{ github.event.client_payload.trigger }}
