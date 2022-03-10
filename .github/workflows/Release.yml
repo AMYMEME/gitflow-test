@@ -3,8 +3,13 @@ on:
     types: release-event
 
 jobs:
+  preset:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Test
+      run: echo ${{ github.event.client_payload.trigger }}
   release:
-    if: ${{ github.event.client_payload.passed }} == 'release'
+    if: ${{ github.event.client_payload.trigger }} == 'release'
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
